@@ -1,0 +1,12 @@
+{
+  "name": "m2m_keygen",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:Billcorporate/m2m_keygen_ruby.git",
+  "author": "Denis <Zaratan> Pasin <zaratan@hey.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@prettier/plugin-ruby": "^3.2.0",
+    "prettier": "^2.7.1"
+  }
+}
