@@ -43,4 +43,4 @@ jobs:
       - name: Install yarn dep
         run: yarn install
       - name: Check prettier
-        run: yarn prettier -c './lib/**/*.rb' 'spec/**/*.rb' Guardfile Rakefile Gemfile
+        run: yarn prettier -c './lib/**/*.rb' 'spec/**/*.rb' Guardfile Rakefile Gemfile m2m_keygen.gemspec

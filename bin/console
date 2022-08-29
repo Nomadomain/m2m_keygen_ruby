@@ -11,5 +11,5 @@ require "m2m_keygen"
 # require "pry"
 # Pry.start
 
-require "irb"
-IRB.start(__FILE__)
+require "pry"
+PRY.start(__FILE__)
