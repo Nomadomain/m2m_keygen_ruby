@@ -52,3 +52,12 @@ PrePush:
   RSpec:
     enabled: true
     command: ['bundle', 'exec', 'rspec', '-f', 'p'] # Invoke within Bundler context
+  Prettier:
+    enabled: true
+    required_executable: './bin/prettirun'
+  Rubocop:
+    enabled: true
+    required_executable: './bin/ruborun'
+  Sorbet:
+    enabled: true
+    required_executable: './bin/sorbet_check'
