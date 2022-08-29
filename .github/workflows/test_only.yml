@@ -1,9 +1,6 @@
 name: Tests
 
 on:
-  push:
-    branches-ignore:
-      - main
   pull_request:
 
 jobs:
