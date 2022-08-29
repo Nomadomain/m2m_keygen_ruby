@@ -20,6 +20,9 @@ Gem::Specification.new do |spec|
   spec.metadata[
     "changelog_uri"
   ] = "https://github.com/Billcorporate/m2m_keygen_ruby/blob/main/CHANGELOG.md"
+  spec.metadata[
+    "documentation_uri"
+  ] = "https://billcorporate.github.io/m2m_keygen_ruby"
   spec.metadata = { "rubygems_mfa_required" => "true" }
 
   # Specify which files should be added to the gem when it is released.
