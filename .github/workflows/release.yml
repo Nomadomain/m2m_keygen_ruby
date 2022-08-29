@@ -55,8 +55,6 @@ jobs:
         with:
           ruby-version: '3.1'
           bundler-cache: true
-      - name: Fetch main branch
-        run: git fetch origin main:main
       - name: Check version matching
         run: bin/check_version_change
   release:
