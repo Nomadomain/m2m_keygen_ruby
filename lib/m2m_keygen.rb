@@ -4,6 +4,7 @@
 require_relative "m2m_keygen/version"
 
 module M2mKeygen
-  class Error < StandardError; end
+  class Error < StandardError
+  end
   # Your code goes here...
 end
