@@ -1,3 +1,5 @@
 --dir
 .
---ignore=/vendor/bundle
+--ignore=node_modules
+--ignore=tmp
+--ignore=vendor
