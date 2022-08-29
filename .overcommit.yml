@@ -61,3 +61,6 @@ PrePush:
   Sorbet:
     enabled: true
     required_executable: './bin/sorbet_check'
+  VersionChange:
+    enabled: true
+    required_executable: './bin/check_version_change'
