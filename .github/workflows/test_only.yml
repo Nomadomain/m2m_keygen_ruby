@@ -1,0 +1,46 @@
+name: Tests
+
+on:
+  pull_request:
+
+jobs:
+  tests:
+    strategy: 
+      matrix:
+        ruby:
+          - '2.7'
+          - '3.0'
+          - '3.1'
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby }}
+          bundler-cache: true
+      - name: Run linter
+        run: bundle exec rubocop
+      - name: Run tests
+        run: bundle exec rspec
+      - name: Run type checking (Sorbet)
+        run: bundle exec srb tc
+  prettier:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.1'
+          bundler-cache: true
+      - name: Set up Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+      - name: Install yarn dep
+        run: yarn install
+      - name: Check prettier
+        run: yarn prettier -c './lib/**/*.rb' 'spec/**/*.rb' Guardfile Rakefile Gemfile m2m_keygen.gemspec

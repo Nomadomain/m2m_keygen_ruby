@@ -1,2 +1,36 @@
+inherit_from:
+  - http://relaxed.ruby.style/rubocop.yml
+
+inherit_gem:
+  prettier: rubocop.yml
+
+require:
+  - rubocop-faker
+  - rubocop-performance
+  - rubocop-sorbet
+
 AllCops:
+  NewCops: enable
   TargetRubyVersion: 2.7
+  DisplayStyleGuide: true
+  DisplayCopNames: true
+  SuggestExtensions: false
+  Exclude:
+    - 'bin/*'
+    - 'vendor/**/*'
+    - 'node_modules/**/*'
+
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*.rb'
+    - 'Guardfile'
+    - 'config/environments/*.rb'
+    - 'lib/tasks/*.rake'
+    - 'm2m_keygen.gemspec'
+
+### Prettier
+Style:
+  Enabled: false
+
+Gemspec/RequiredRubyVersion:
+  Enabled: false

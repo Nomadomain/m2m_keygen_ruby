@@ -1,8 +1,11 @@
+# typed: strict
 # frozen_string_literal: true
 
 require_relative "m2m_keygen/version"
 
+# Main module
 module M2mKeygen
-  class Error < StandardError; end
-  # Your code goes here...
+  # Standard error for the gem
+  class Error < StandardError
+  end
 end
