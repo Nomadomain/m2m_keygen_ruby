@@ -1,0 +1,82 @@
+name: Test and Release
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  tests:
+    strategy: 
+      matrix:
+        ruby:
+          - '2.7'
+          - '3.0'
+          - '3.1'
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby }}
+          bundler-cache: true
+      - name: Run linter
+        run: bundle exec rubocop
+      - name: Run tests
+        run: bundle exec rspec
+      - name: Run type checking (Sorbet)
+        run: bundle exec srb tc
+  prettier:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.1'
+          bundler-cache: true
+      - name: Set up Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+      - name: Install yarn dep
+        run: yarn install
+      - name: Check prettier
+        run: yarn prettier -c './lib/**/*.rb' 'spec/**/*.rb' Guardfile Rakefile Gemfile m2m_keygen.gemspec
+  version_match:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.1'
+          bundler-cache: true
+      - name: Fetch main branch
+        run: git fetch origin main:main
+      - name: Check version matching
+        run: bin/check_version_change
+  release:
+    needs: [tests, prettier, version_match]
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.1
+          bundler-cache: true
+      - name: Prepare credentials
+        env:
+          RUBYGEM_KEY: ${{ secrets.RUBYGEM_KEY }}
+        run: "mkdir -p ~/.gem && echo -e \"---\\r\\n:rubygems_api_key: $RUBYGEM_KEY\" > ~/.gem/credentials && chmod 0600 ~/.gem/credentials"
+      - name: Setup username/email
+        run: 'git config --global user.email zaratan@hey.com && git config --global user.name "Denis <Zaratan> Pasin"'
+      - name: Fetch tags from remote
+        run: 'git fetch -t'
+      - name: Publish if version change
+        run: 'git diff `git tag | tail -1` -- lib/m2m_keygen/version.rb | grep -E "^\+.*VERSION" && rake release || echo "No release for now"'
