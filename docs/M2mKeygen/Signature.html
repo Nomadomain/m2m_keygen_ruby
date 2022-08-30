@@ -646,7 +646,7 @@
       <pre class="code"><span class="info file"># File 'lib/m2m_keygen/signature.rb', line 46</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_validate'>validate</span><span class='lparen'>(</span><span class='label'>params:</span><span class='comma'>,</span> <span class='label'>verb:</span><span class='comma'>,</span> <span class='label'>path:</span><span class='comma'>,</span> <span class='label'>signature:</span><span class='rparen'>)</span>
-  <span class='kw'>if</span> <span class='const'>OpenSSL</span><span class='period'>.</span><span class='id identifier rubyid_method_defined?'>method_defined?</span><span class='lparen'>(</span><span class='symbol'>:fixed_length_secure_compare</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='const'>OpenSSL</span><span class='period'>.</span><span class='id identifier rubyid_methods'>methods</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span><span class='lparen'>(</span><span class='symbol'>:fixed_length_secure_compare</span><span class='rparen'>)</span>
     <span class='const'>OpenSSL</span><span class='period'>.</span><span class='id identifier rubyid_fixed_length_secure_compare'>fixed_length_secure_compare</span><span class='lparen'>(</span>
       <span class='id identifier rubyid_sign'>sign</span><span class='lparen'>(</span><span class='label'>params:</span> <span class='id identifier rubyid_params'>params</span><span class='comma'>,</span> <span class='label'>verb:</span> <span class='id identifier rubyid_verb'>verb</span><span class='comma'>,</span> <span class='label'>path:</span> <span class='id identifier rubyid_path'>path</span><span class='rparen'>)</span><span class='comma'>,</span>
       <span class='id identifier rubyid_signature'>signature</span>
@@ -670,7 +670,7 @@
 </div>
 
       <div id="footer">
-  Generated on Tue Aug 30 15:15:16 2022 by
+  Generated on Tue Aug 30 15:18:09 2022 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.28 (ruby-3.1.2).
 </div>
