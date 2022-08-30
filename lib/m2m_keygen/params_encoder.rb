@@ -15,7 +15,7 @@ module M2mKeygen
       return "" if @params.nil? || @params.empty?
       @params
         .sort_by { |k, _| k.to_s }
-        .reject { |_, v| (v.is_a?(String) && v.blank?) || v.nil? }
+        .reject { |_, v| (v.is_a?(String) && v == "") || v.nil? }
         .map { |k, v| "#{k}=#{jsonify_value(encode_value(T.must(v)))}" }
         .join("&")
     end
@@ -48,7 +48,7 @@ module M2mKeygen
     def encode_hash_value(value)
       value
         .sort_by { |k, _| k.to_s }
-        .reject { |_, v| (v.is_a?(String) && v.blank?) || v.nil? }
+        .reject { |_, v| (v.is_a?(String) && v == "") || v.nil? }
         .map { |k, v| [k.to_s, encode_value(v)] }
         .to_h
     end

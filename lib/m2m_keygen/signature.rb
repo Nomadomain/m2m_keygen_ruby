@@ -1,6 +1,7 @@
 # typed: strict
 
 require "openssl"
+require "json"
 
 module M2mKeygen
   class Signature

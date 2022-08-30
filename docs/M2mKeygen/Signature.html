@@ -305,14 +305,14 @@
       <pre class="lines">
 
 
-16
 17
 18
 19
-20</pre>
+20
+21</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/m2m_keygen/signature.rb', line 16</span>
+      <pre class="code"><span class="info file"># File 'lib/m2m_keygen/signature.rb', line 17</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_secret'>secret</span><span class='comma'>,</span> <span class='label'>algorithm:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>sha512</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
   <span class='ivar'>@secret</span> <span class='op'>=</span> <span class='const'>T</span><span class='period'>.</span><span class='id identifier rubyid_let'>let</span><span class='lparen'>(</span><span class='id identifier rubyid_secret'>secret</span><span class='comma'>,</span> <span class='const'>String</span><span class='rparen'>)</span>
@@ -368,12 +368,12 @@
       <pre class="lines">
 
 
-13
 14
-15</pre>
+15
+16</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/m2m_keygen/signature.rb', line 13</span>
+      <pre class="code"><span class="info file"># File 'lib/m2m_keygen/signature.rb', line 14</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_algorithm'>algorithm</span>
   <span class='ivar'>@algorithm</span>
@@ -422,12 +422,12 @@
       <pre class="lines">
 
 
-10
 11
-12</pre>
+12
+13</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/m2m_keygen/signature.rb', line 10</span>
+      <pre class="code"><span class="info file"># File 'lib/m2m_keygen/signature.rb', line 11</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_secret'>secret</span>
   <span class='ivar'>@secret</span>
@@ -518,16 +518,16 @@
       <pre class="lines">
 
 
-29
 30
 31
 32
 33
 34
-35</pre>
+35
+36</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/m2m_keygen/signature.rb', line 29</span>
+      <pre class="code"><span class="info file"># File 'lib/m2m_keygen/signature.rb', line 30</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_sign'>sign</span><span class='lparen'>(</span><span class='label'>params:</span><span class='comma'>,</span> <span class='label'>verb:</span><span class='comma'>,</span> <span class='label'>path:</span><span class='rparen'>)</span>
   <span class='const'>OpenSSL</span><span class='op'>::</span><span class='const'>HMAC</span><span class='period'>.</span><span class='id identifier rubyid_hexdigest'>hexdigest</span><span class='lparen'>(</span>
@@ -626,7 +626,6 @@
       <pre class="lines">
 
 
-45
 46
 47
 48
@@ -640,10 +639,11 @@
 56
 57
 58
-59</pre>
+59
+60</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/m2m_keygen/signature.rb', line 45</span>
+      <pre class="code"><span class="info file"># File 'lib/m2m_keygen/signature.rb', line 46</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_validate'>validate</span><span class='lparen'>(</span><span class='label'>params:</span><span class='comma'>,</span> <span class='label'>verb:</span><span class='comma'>,</span> <span class='label'>path:</span><span class='comma'>,</span> <span class='label'>signature:</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='const'>OpenSSL</span><span class='period'>.</span><span class='id identifier rubyid_method_defined?'>method_defined?</span><span class='lparen'>(</span><span class='symbol'>:fixed_length_secure_compare</span><span class='rparen'>)</span>
@@ -670,7 +670,7 @@
 </div>
 
       <div id="footer">
-  Generated on Tue Aug 30 10:50:17 2022 by
+  Generated on Tue Aug 30 11:26:10 2022 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.28 (ruby-3.1.2).
 </div>
