@@ -146,6 +146,38 @@ AuthSignature.validate(
 
 <p>If the validation is true, the request was signed with the same algorithm and same secret key.</p>
 
+<h3 id="rackvalidator">RackValidator</h3>
+
+<p>This module is here for directly validate Rack requests.</p>
+
+<p>It will validate :</p>
+
+<ul>
+  <li>Signature matching</li>
+  <li>That the <code>expiry</code> parameter is present and between now and in 2 minutes.</li>
+</ul>
+
+<h4 id="initialization-1">Initialization</h4>
+
+<p>You should initialize the <code>RackValidator</code> once (in an initializer for example) with your secret key, eventually an encryption algorithm and a header name for the signature.</p>
+
+<p><code>ruby
+RackSignatureValidator =
+  M2mKeygen::RackValidator.new(
+    "secret",
+    algorithm: "sha512", # Default value
+    header_name: "X-Signature" # Default value
+  )
+</code></p>
+
+<h4 id="validation">Validation</h4>
+
+<p>You can then validate a Rack::Request or a Rails Request directly:</p>
+
+<p><code>ruby
+RackSignatureValidator.validate(request) # =&gt; true or false
+</code></p>
+
 <h2 id="how-does-it-works">How does it works</h2>
 
 <p>This is intended for a secure discussion between 2 servers and not something in a browser as the secret key must be stored and used both side (and you don’t want to send the secret key in the browser).</p>
@@ -188,7 +220,7 @@ The receiver will generate the same signature from the HTTP request it has recei
 </div></div>
 
       <div id="footer">
-  Generated on Tue Aug 30 11:26:10 2022 by
+  Generated on Tue Aug 30 15:15:16 2022 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.28 (ruby-3.1.2).
 </div>
