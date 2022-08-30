@@ -59,9 +59,7 @@
 
       <div id="content"><div id='filecontents'><h1 id="m2mkeygen">M2mKeygen</h1>
 
-<p>Welcome to your new gem! In this directory, you’ll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file <code>lib/m2m_keygen</code>. To experiment with that code, run <code>bin/console</code> for an interactive prompt.</p>
-
-<p>TODO: Delete this and the text above, and describe your gem</p>
+<p>This gem exists for simplifying Machine to Machine signature generation and verification in a secure way.</p>
 
 <h2 id="installation">Installation</h2>
 
@@ -77,13 +75,104 @@
 
 <h2 id="usage">Usage</h2>
 
-<p>TODO: Write usage instructions here</p>
+<h3 id="signature">Signature</h3>
+
+<p>This gem provides a module for signing and checking signature for HTTP requests</p>
+
+<h4 id="initialization">Initialization</h4>
+
+<p>You should initialize the <code>Signature</code> once (in an initializer for example) with your secret key and eventually an encryption algorithm.</p>
+
+<p>```ruby
+AuthSignature = M2mKeygen::Signature.new(“my_secret_key”, algorithm: “sha256”)</p>
+
+<p>AuthSignature = M2mKeygen::Signature.new(“my_secret_key”) # =&gt; Will default algorithm to sha512
+```</p>
+
+<h4 id="signing">Signing</h4>
+
+<p>Use the <code>sign</code> method to generate a new signature.</p>
+
+<ul>
+  <li><code>params</code> is a params hash as used in Rack. The order of keys isn’t important as the gem will reformat them.</li>
+  <li><code>verb</code> is the http verb</li>
+  <li><code>path</code> is the path for the request</li>
+</ul>
+
+<p><code>ruby
+AuthSignature.sign(
+  params: {
+    "a" =&gt; "test",
+    :b =&gt; 1,
+    "d" =&gt; %w[a b],
+    "c" =&gt; {
+      "e" =&gt; 45
+    }
+  },
+  verb: "get",
+  path: "/path"
+) # =&gt; "a52168521868ebb37a38f90ec943163d9acb6ceb982206f437e1feb9ca32e7c1a8edef68f0ff4e195aeca1da93ae9afc8da214cb51a812fc6cc3730fdc7613fa"
+</code></p>
+
+<p>After generating the signature send it alongside your request for verification on the receiver side.</p>
+
+<h4 id="verifying">Verifying</h4>
+
+<p>Use the <code>validate</code> method to verify that a received signature correspond to the HTTP request.</p>
+
+<ul>
+  <li><code>params</code> is a params hash as used in Rack. The order of keys isn’t important as the gem will reformat them.</li>
+  <li><code>verb</code> is the http verb</li>
+  <li><code>path</code> is the path for the request</li>
+  <li><code>signature</code> is the received signature</li>
+</ul>
+
+<p><code>ruby
+AuthSignature.validate(
+  params: {
+    "a" =&gt; "test",
+    :b =&gt; 1,
+    "d" =&gt; %w[a b],
+    "c" =&gt; {
+      "e" =&gt; 45
+    }
+  },
+  verb: "get",
+  path: "/path",
+  signature:
+    "a52168521868ebb37a38f90ec943163d9acb6ceb982206f437e1feb9ca32e7c1a8edef68f0ff4e195aeca1da93ae9afc8da214cb51a812fc6cc3730fdc7613fa"
+) #=&gt; true
+</code></p>
+
+<p>If the validation is true, the request was signed with the same algorithm and same secret key.</p>
+
+<h2 id="how-does-it-works">How does it works</h2>
+
+<p>This is intended for a secure discussion between 2 servers and not something in a browser as the secret key must be stored and used both side (and you don’t want to send the secret key in the browser).</p>
+
+<p>Both server will have the same secret key.
+The sender will generate a signature matching the HTTP request it will be sending and add it to the request in a designated header.
+The receiver will generate the same signature from the HTTP request it has received and will compare it with the signature in the header.</p>
+
+<p>The comparison will be done in constant time (i.e. secure) because both string will be hexdigest from a HMAC with the same algorithm.</p>
 
 <h2 id="development">Development</h2>
 
 <p>After checking out the repo, run <code>bin/setup</code> to install dependencies. Then, run <code>rake spec</code> to run the tests. You can also run <code>bin/console</code> for an interactive prompt that will allow you to experiment.</p>
 
 <p>To install this gem onto your local machine, run <code>bundle exec rake install</code>. To release a new version, update the version number in <code>version.rb</code>, and then run <code>bundle exec rake release</code>, which will create a git tag for the version, push git commits and the created tag, and push the <code>.gem</code> file to <a href="https://rubygems.org">rubygems.org</a>.</p>
+
+<p>Every commit/push is checked by overcommit. You should (must) activate overcommit by using <code>overcommit -i</code> post installation.</p>
+
+<p>Tool used in dev:</p>
+
+<ul>
+  <li>Rubocop</li>
+  <li>Prettier</li>
+  <li>Yard</li>
+  <li>Sorbet</li>
+  <li>RSpec</li>
+</ul>
 
 <h2 id="contributing">Contributing</h2>
 
@@ -99,7 +188,7 @@
 </div></div>
 
       <div id="footer">
-  Generated on Mon Aug 29 18:08:40 2022 by
+  Generated on Tue Aug 30 11:26:10 2022 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.28 (ruby-3.1.2).
 </div>

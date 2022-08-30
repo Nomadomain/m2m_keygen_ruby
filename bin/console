@@ -12,4 +12,4 @@ require "m2m_keygen"
 # Pry.start
 
 require "pry"
-PRY.start(__FILE__)
+Pry.start(__FILE__)

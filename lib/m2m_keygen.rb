@@ -1,7 +1,10 @@
 # typed: strict
-# frozen_string_literal: true
 
-require_relative "m2m_keygen/version"
+require "sorbet-runtime"
+require "zeitwerk"
+
+loader = Zeitwerk::Loader.for_gem
+loader.setup
 
 # Main module
 module M2mKeygen
