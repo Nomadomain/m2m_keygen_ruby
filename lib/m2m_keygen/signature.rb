@@ -44,7 +44,7 @@ module M2mKeygen
       ).returns(T::Boolean)
     end
     def validate(params:, verb:, path:, signature:)
-      if OpenSSL.method_defined?(:fixed_length_secure_compare)
+      if OpenSSL.methods.include?(:fixed_length_secure_compare)
         OpenSSL.fixed_length_secure_compare(
           sign(params: params, verb: verb, path: path),
           signature

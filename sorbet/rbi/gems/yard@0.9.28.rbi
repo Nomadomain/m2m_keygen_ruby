@@ -515,6 +515,65 @@ end
 # source://yard-0.9.28/lib/yard.rb:62
 RUBY19 = T.let(T.unsafe(nil), TrueClass)
 
+# @private
+#
+# source://yard-0.9.28/lib/yard/server/rack_adapter.rb:85
+class Rack::Request
+  # @return [Request] a new instance of Request
+  #
+  # source://rack-2.2.4/lib/rack/request.rb:26
+  def initialize(env); end
+
+  # source://rack-2.2.4/lib/rack/request.rb:40
+  def delete_param(k); end
+
+  # source://rack-2.2.4/lib/rack/request.rb:31
+  def params; end
+
+  # source://rack-2.2.4/lib/rack/request.rb:31
+  def query; end
+
+  # source://rack-2.2.4/lib/rack/request.rb:35
+  def update_param(k, v); end
+
+  # Returns the value of attribute version_supplied.
+  #
+  # source://yard-0.9.28/lib/yard/server/rack_adapter.rb:86
+  def version_supplied; end
+
+  # Sets the attribute version_supplied
+  #
+  # @param value the value to set the attribute version_supplied to.
+  #
+  # source://yard-0.9.28/lib/yard/server/rack_adapter.rb:86
+  def version_supplied=(_arg0); end
+
+  # @return [Boolean]
+  #
+  # source://yard-0.9.28/lib/yard/server/rack_adapter.rb:88
+  def xhr?; end
+
+  class << self
+    # Returns the value of attribute ip_filter.
+    #
+    # source://rack-2.2.4/lib/rack/request.rb:16
+    def ip_filter; end
+
+    # Sets the attribute ip_filter
+    #
+    # @param value the value to set the attribute ip_filter to.
+    #
+    # source://rack-2.2.4/lib/rack/request.rb:16
+    def ip_filter=(_arg0); end
+  end
+end
+
+# source://rack-2.2.4/lib/rack/request.rb:20
+Rack::Request::ALLOWED_SCHEMES = T.let(T.unsafe(nil), Array)
+
+# source://rack-2.2.4/lib/rack/request.rb:21
+Rack::Request::SCHEME_WHITELIST = T.let(T.unsafe(nil), Array)
+
 # Extensions to the core String class
 #
 # source://yard-0.9.28/lib/yard/core_ext/string.rb:2
@@ -13919,6 +13978,71 @@ end
 #
 # source://yard-0.9.28/lib/yard/server/adapter.rb:11
 class YARD::Server::NotFoundError < ::RuntimeError; end
+
+# A server adapter to respond to requests using the Rack server infrastructure.
+#
+# @since 0.6.0
+#
+# source://yard-0.9.28/lib/yard/server/rack_adapter.rb:44
+class YARD::Server::RackAdapter < ::YARD::Server::Adapter
+  include ::WEBrick::HTTPUtils
+
+  # Responds to Rack requests and builds a response with the {Router}.
+  #
+  # @return [Array(Numeric,Hash,Array)] the Rack-style response
+  # @since 0.6.0
+  #
+  # source://yard-0.9.28/lib/yard/server/rack_adapter.rb:49
+  def call(env); end
+
+  # Starts the +Rack::Server+. This method will pass control to the server and
+  # block.
+  #
+  # @return [void]
+  # @since 0.6.0
+  #
+  # source://yard-0.9.28/lib/yard/server/rack_adapter.rb:62
+  def start; end
+
+  private
+
+  # @since 0.6.0
+  #
+  # source://yard-0.9.28/lib/yard/server/rack_adapter.rb:71
+  def print_start_message(server); end
+end
+
+# This class wraps the {RackAdapter} into a Rack-compatible middleware.
+# See {#initialize} for a list of options to pass via Rack's +#use+ method.
+#
+# @example Using the RackMiddleware in a Rack application
+#   libraries = {:mylib => [YARD::Server::LibraryVersion.new('mylib', nil, '/path/to/.yardoc')]}
+#   use YARD::Server::RackMiddleware, :libraries => libraries
+# @note You must pass a +:libraries+ option to the RackMiddleware via +#use+. To
+#   read about how to return a list of libraries, see {LibraryVersion} or look
+#   at the example below.
+# @since 0.6.0
+#
+# source://yard-0.9.28/lib/yard/server/rack_adapter.rb:17
+class YARD::Server::RackMiddleware
+  # Creates a new Rack-based middleware for serving YARD documentation.
+  #
+  # @option opts
+  # @option opts
+  # @option opts
+  # @param app the next Rack middleware in the stack
+  # @param opts [Hash] a customizable set of options
+  # @return [RackMiddleware] a new instance of RackMiddleware
+  # @since 0.6.0
+  #
+  # source://yard-0.9.28/lib/yard/server/rack_adapter.rb:27
+  def initialize(app, opts = T.unsafe(nil)); end
+
+  # @since 0.6.0
+  #
+  # source://yard-0.9.28/lib/yard/server/rack_adapter.rb:33
+  def call(env); end
+end
 
 # A router class implements the logic used to recognize a request for a specific
 # URL and run specific {Commands::Base commands}.

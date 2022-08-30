@@ -1534,6 +1534,30 @@ class ActiveSupport::Cache::Strategy::LocalCache::LocalStore
   def write_entry(key, entry); end
 end
 
+# --
+# This class wraps up local storage for middlewares. Only the middleware method should
+# construct them.
+#
+# source://activesupport-7.0.3.1/lib/active_support/cache/strategy/local_cache_middleware.rb:13
+class ActiveSupport::Cache::Strategy::LocalCache::Middleware
+  # @return [Middleware] a new instance of Middleware
+  #
+  # source://activesupport-7.0.3.1/lib/active_support/cache/strategy/local_cache_middleware.rb:16
+  def initialize(name, local_cache_key); end
+
+  # source://activesupport-7.0.3.1/lib/active_support/cache/strategy/local_cache_middleware.rb:27
+  def call(env); end
+
+  # source://activesupport-7.0.3.1/lib/active_support/cache/strategy/local_cache_middleware.rb:14
+  def local_cache_key; end
+
+  # source://activesupport-7.0.3.1/lib/active_support/cache/strategy/local_cache_middleware.rb:14
+  def name; end
+
+  # source://activesupport-7.0.3.1/lib/active_support/cache/strategy/local_cache_middleware.rb:22
+  def new(app); end
+end
+
 # These options mean something to all cache implementations. Individual cache
 # implementations may support additional options.
 #

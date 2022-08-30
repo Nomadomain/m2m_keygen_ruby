@@ -81,6 +81,36 @@ AuthSignature.validate(
 
 If the validation is true, the request was signed with the same algorithm and same secret key.
 
+### RackValidator
+
+This module is here for directly validate Rack requests.
+
+It will validate :
+
+- Signature matching
+- That the `expiry` parameter is present and between now and in 2 minutes.
+
+#### Initialization
+
+You should initialize the `RackValidator` once (in an initializer for example) with your secret key, eventually an encryption algorithm and a header name for the signature.
+
+```ruby
+RackSignatureValidator =
+  M2mKeygen::RackValidator.new(
+    "secret",
+    algorithm: "sha512", # Default value
+    header_name: "X-Signature" # Default value
+  )
+```
+
+#### Validation
+
+You can then validate a Rack::Request or a Rails Request directly:
+
+```ruby
+RackSignatureValidator.validate(request) # => true or false
+```
+
 ## How does it works
 
 This is intended for a secure discussion between 2 servers and not something in a browser as the secret key must be stored and used both side (and you don't want to send the secret key in the browser).
