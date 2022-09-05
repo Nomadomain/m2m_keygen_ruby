@@ -18,7 +18,7 @@ module M2mKeygen
       @signature = T.let(Signature.new(secret, algorithm: algorithm), Signature)
     end
 
-    sig { params(req: Rack::Request).returns(T::Boolean) }
+    sig { params(req: T.untyped).returns(T::Boolean) }
     def validate(req)
       # This will cover the case when Rails is used.
       req = Rack::Request.new(req.env)

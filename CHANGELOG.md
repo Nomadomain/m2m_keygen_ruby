@@ -7,13 +7,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [0.4.0]
+## [0.4.1] - 2022-09-05
+
+### Changed
+
+- Loosening RackValidator initialize type.
+
+## [0.4.0] - 2022-08-30
 
 ### Added
 
 - Direct validation for `Rack::Request` like objects.
 
-## [0.3.0]
+## [0.3.0] - 2022-08-30
 
 ### Added
 
@@ -25,13 +31,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Comprehensive README
 - Added various minimal require
 
-## [0.2.1]
+## [0.2.1] - 2022-08-29
 
 ### Added
 
 - Good link to documentation
 
-## [0.2.0]
+## [0.2.0] - 2022-08-29
 
 ### Added
 
