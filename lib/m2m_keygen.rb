@@ -1,7 +1,7 @@
 # typed: strict
 
-require "sorbet-runtime"
-require "zeitwerk"
+require 'sorbet-runtime'
+require 'zeitwerk'
 
 loader = Zeitwerk::Loader.for_gem
 loader.setup
