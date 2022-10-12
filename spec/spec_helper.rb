@@ -1,16 +1,16 @@
 # typed: false
 # frozen_string_literal: true
 
-require "bundler/setup"
-require "simplecov"
-require "rspec_in_context"
-require "faker"
+require 'bundler/setup'
+require 'simplecov'
+require 'rspec_in_context'
+require 'faker'
 
-require "dotenv/load"
+require 'dotenv/load'
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
-  config.example_status_persistence_file_path = ".rspec_status"
+  config.example_status_persistence_file_path = '.rspec_status'
 
   config.expect_with :rspec do |c|
     c.syntax = :expect
@@ -35,7 +35,7 @@ SimpleCov.at_exit do
   SimpleCov.minimum_coverage_by_file 80
 end
 
-SimpleCov.start { load_profile "test_frameworks" }
+SimpleCov.start { load_profile 'test_frameworks' }
 
-require "m2m_keygen"
-Dir["./spec/support/**/*.rb"].sort.each { |f| require f }
+require 'm2m_keygen'
+Dir['./spec/support/**/*.rb'].sort.each { |f| require f }

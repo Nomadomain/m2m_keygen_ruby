@@ -12,19 +12,19 @@ module M2mKeygen
 
     sig { returns(String) }
     def encode
-      return "" if @params.nil? || @params.empty?
+      return '' if @params.nil? || @params.empty?
       @params
         .sort_by { |k, _| k.to_s }
-        .reject { |_, v| (v.is_a?(String) && v == "") || v.nil? }
+        .reject { |_, v| (v.is_a?(String) && v == '') || v.nil? }
         .map { |k, v| "#{k}=#{jsonify_value(encode_value(T.must(v)))}" }
-        .join("&")
+        .join('&')
     end
 
     private
 
     sig do
       params(value: Types::ParamsValueType).returns(
-        T.any(String, Symbol, Integer)
+        T.any(String, Symbol, Integer),
       )
     end
     def jsonify_value(value)
@@ -42,13 +42,13 @@ module M2mKeygen
 
     sig do
       params(value: Types::ParamsHashNotNilType).returns(
-        T::Hash[String, Types::ParamsValueType]
+        T::Hash[String, Types::ParamsValueType],
       )
     end
     def encode_hash_value(value)
       value
         .sort_by { |k, _| k.to_s }
-        .reject { |_, v| (v.is_a?(String) && v == "") || v.nil? }
+        .reject { |_, v| (v.is_a?(String) && v == '') || v.nil? }
         .map { |k, v| [k.to_s, encode_value(v)] }
         .to_h
     end

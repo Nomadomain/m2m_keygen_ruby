@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Updated all gems + prettier
+
 ## [0.4.2] - 2022-09-05
 
 ### Changed

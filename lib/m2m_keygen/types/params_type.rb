@@ -18,7 +18,7 @@ module M2mKeygen
           String,
           Symbol,
           T::Array[T.untyped],
-          T::Hash[T.untyped, T.untyped]
+          T::Hash[T.untyped, T.untyped],
         )
       end
   end

@@ -3,5 +3,5 @@
 
 module M2mKeygen
   # Gem version
-  VERSION = "0.4.2"
+  VERSION = '0.4.2'
 end
