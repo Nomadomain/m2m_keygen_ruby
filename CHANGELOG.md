@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.4.4] - 2022-11-14
+
+### Changed
+
+- Body is parsed as JSON and added to the query string
+
 ## [0.4.3] - 2022-10-12
 
 ### Changed
@@ -55,7 +61,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Basic skeleton for gem
 
-[unreleased]: https://github.com/Billcorporate/m2m_keygen_ruby/compare/v0.4.3...HEAD
+[unreleased]: https://github.com/Billcorporate/m2m_keygen_ruby/compare/v0.4.4...HEAD
+[0.4.4]: https://github.com/Billcorporate/m2m_keygen_ruby/releases/tag/v0.4.4
 [0.4.3]: https://github.com/Billcorporate/m2m_keygen_ruby/releases/tag/v0.4.3
 [0.4.2]: https://github.com/Billcorporate/m2m_keygen_ruby/releases/tag/v0.4.2
 [0.4.1]: https://github.com/Billcorporate/m2m_keygen_ruby/releases/tag/v0.4.1
