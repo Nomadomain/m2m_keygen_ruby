@@ -16,6 +16,7 @@ describe M2mKeygen::RackValidator do
       header_name: header_name,
     )
   end
+  let(:body) { JSON.generate({ 'b' => '1' }) }
   let(:params) do
     {
       'expiry' => expiry,
@@ -32,7 +33,7 @@ describe M2mKeygen::RackValidator do
     validator.signature.sign(params: params, verb: 'GET', path: '/path')
   end
   let(:expiry) { Time.now.to_i + 60 }
-  let(:query_string) { "expiry=#{expiry}&b=1&a=2&c[]=ok&c[]=nok&d[f]=3&d[e]=4" }
+  let(:query_string) { "expiry=#{expiry}&a=2&c[]=ok&c[]=nok&d[f]=3&d[e]=4" }
   let(:method) { 'GET' }
   let(:path) { '/path' }
   let(:req_env) do
@@ -45,7 +46,7 @@ describe M2mKeygen::RackValidator do
       'HTTP_VERSION' => 'HTTP/1.1',
       'HTTP_HOST' => 'localhost:3000',
       'PATH_INFO' => path,
-      'rack.input' => StringIO.new(query_string),
+      'rack.input' => StringIO.new(body),
     }
   end
   let(:req) { Rack::Request.new(req_env) }
