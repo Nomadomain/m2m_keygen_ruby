@@ -495,7 +495,8 @@
 29
 30
 31
-32</pre>
+32
+33</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/m2m_keygen/rack_validator.rb', line 22</span>
@@ -503,8 +504,9 @@
 <span class='kw'>def</span> <span class='id identifier rubyid_validate'>validate</span><span class='lparen'>(</span><span class='id identifier rubyid_req'>req</span><span class='rparen'>)</span>
   <span class='comment'># This will cover the case when Rails is used.
 </span>  <span class='id identifier rubyid_req'>req</span> <span class='op'>=</span> <span class='const'>Rack</span><span class='op'>::</span><span class='const'>Request</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_req'>req</span><span class='period'>.</span><span class='id identifier rubyid_env'>env</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_params'>params</span> <span class='op'>=</span> <span class='lparen'>(</span><span class='id identifier rubyid_req'>req</span><span class='period'>.</span><span class='id identifier rubyid_params'>params</span> <span class='op'>||</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span><span class='lparen'>(</span><span class='id identifier rubyid_parse_json_body'>parse_json_body</span><span class='lparen'>(</span><span class='id identifier rubyid_req'>req</span><span class='rparen'>)</span><span class='rparen'>)</span>
   <span class='ivar'>@signature</span><span class='period'>.</span><span class='id identifier rubyid_validate'>validate</span><span class='lparen'>(</span>
-    <span class='label'>params:</span> <span class='lparen'>(</span><span class='id identifier rubyid_req'>req</span><span class='period'>.</span><span class='id identifier rubyid_params'>params</span> <span class='op'>||</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span><span class='lparen'>(</span><span class='id identifier rubyid_parse_json_body'>parse_json_body</span><span class='lparen'>(</span><span class='id identifier rubyid_req'>req</span><span class='rparen'>)</span><span class='rparen'>)</span> <span class='op'>||</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span>
+    <span class='label'>params:</span> <span class='id identifier rubyid_params'>params</span><span class='comma'>,</span>
     <span class='label'>verb:</span> <span class='id identifier rubyid_req'>req</span><span class='period'>.</span><span class='id identifier rubyid_request_method'>request_method</span> <span class='op'>||</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>get</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span>
     <span class='label'>path:</span> <span class='id identifier rubyid_req'>req</span><span class='period'>.</span><span class='id identifier rubyid_path'>path</span> <span class='op'>||</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span>
     <span class='label'>signature:</span> <span class='id identifier rubyid_req'>req</span><span class='period'>.</span><span class='id identifier rubyid_env'>env</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>HTTP_X_SIGNATURE</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span> <span class='op'>||</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span>
@@ -521,7 +523,7 @@
 </div>
 
       <div id="footer">
-  Generated on Mon Nov 14 18:01:46 2022 by
+  Generated on Mon Nov 14 18:18:15 2022 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.28 (ruby-3.1.2).
 </div>

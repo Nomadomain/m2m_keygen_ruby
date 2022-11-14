@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.4.5] - 2022-11-14
+
+### Fixed
+
+- Expiry can be part of JSON body
+
 ## [0.4.4] - 2022-11-14
 
 ### Changed
@@ -61,7 +67,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Basic skeleton for gem
 
-[unreleased]: https://github.com/Billcorporate/m2m_keygen_ruby/compare/v0.4.4...HEAD
+[unreleased]: https://github.com/Billcorporate/m2m_keygen_ruby/compare/v0.4.5...HEAD
+[0.4.5]: https://github.com/Billcorporate/m2m_keygen_ruby/releases/tag/v0.4.5
 [0.4.4]: https://github.com/Billcorporate/m2m_keygen_ruby/releases/tag/v0.4.4
 [0.4.3]: https://github.com/Billcorporate/m2m_keygen_ruby/releases/tag/v0.4.3
 [0.4.2]: https://github.com/Billcorporate/m2m_keygen_ruby/releases/tag/v0.4.2
