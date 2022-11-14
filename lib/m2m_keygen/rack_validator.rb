@@ -22,8 +22,9 @@ module M2mKeygen
     def validate(req)
       # This will cover the case when Rails is used.
       req = Rack::Request.new(req.env)
+      params = (req.params || {}).merge(parse_json_body(req))
       @signature.validate(
-        params: (req.params || {}).merge(parse_json_body(req)) || {},
+        params: params,
         verb: req.request_method || 'get',
         path: req.path || '/',
         signature: req.env['HTTP_X_SIGNATURE'] || '',
