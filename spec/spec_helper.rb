@@ -38,4 +38,4 @@ end
 SimpleCov.start { load_profile 'test_frameworks' }
 
 require 'm2m_keygen'
-Dir['./spec/support/**/*.rb'].sort.each { |f| require f }
+Dir['./spec/support/**/*.rb'].each { |f| require f }

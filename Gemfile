@@ -14,8 +14,8 @@ group :development do
   gem 'overcommit', require: false
   gem 'prettier', require: false
   gem 'pry-byebug'
-  gem 'rake', '~> 13.0'
-  gem 'rspec', '~> 3.0'
+  gem 'rake', '>= 13.0'
+  gem 'rspec', '>= 3.0'
   gem 'rspec_in_context', '> 1'
   gem 'rubocop', '> 0.58', require: false
   gem 'rubocop-faker', require: false

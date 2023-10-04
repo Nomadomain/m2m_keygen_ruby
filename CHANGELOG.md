@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.4.7] - 2023-10-04
+
+### Fixed
+
+- Various updates
+
 ## [0.4.6] - 2022-11-14
 
 ### Fixed
@@ -73,7 +79,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Basic skeleton for gem
 
-[unreleased]: https://github.com/Billcorporate/m2m_keygen_ruby/compare/v0.4.6...HEAD
+[unreleased]: https://github.com/Billcorporate/m2m_keygen_ruby/compare/v0.4.7...HEAD
+[0.4.7]: https://github.com/Billcorporate/m2m_keygen_ruby/releases/tag/v0.4.7
 [0.4.6]: https://github.com/Billcorporate/m2m_keygen_ruby/releases/tag/v0.4.6
 [0.4.5]: https://github.com/Billcorporate/m2m_keygen_ruby/releases/tag/v0.4.5
 [0.4.4]: https://github.com/Billcorporate/m2m_keygen_ruby/releases/tag/v0.4.4
