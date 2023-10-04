@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    m2m_keygen (0.4.6)
+    m2m_keygen (0.4.7)
       rack
       sorbet-runtime
       zeitwerk (>= 2.6)
