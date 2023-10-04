@@ -43,5 +43,5 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency 'rack'
   spec.add_dependency 'sorbet-runtime'
-  spec.add_dependency 'zeitwerk', '~> 2.6'
+  spec.add_dependency 'zeitwerk', '>= 2.6'
 end
